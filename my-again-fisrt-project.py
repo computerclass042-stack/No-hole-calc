@@ -1,4 +1,4 @@
-```python
+
 import streamlit as st
 
 st.title("🧮 My First Calculator Again")
@@ -67,4 +67,4 @@ if e != "":
 
         except ValueError:
             st.error("Please choose only number not alphabets")
-```
+
