@@ -5,20 +5,17 @@ st.title("🧮 My First Calculator Again")
 
 st.write("For starting calculator press any alphabet or number")
 
-# Start input
 e = st.text_input("Press number/alphabet to start")
 
 if e != "":
 
     st.write("If you want to exit the calculator press 5")
 
-    # First number
+    # Inputs
     a = st.text_input("Enter your first number")
-
-    # Second number
     b = st.text_input("Enter your second number")
 
-    # Choice
+    # Menu
     st.write("1 = plus '+'")
     st.write("2 = Minus '-'")
     st.write("3 = multiply '*'")
@@ -27,16 +24,36 @@ if e != "":
 
     c = st.text_input("Enter your choice")
 
-    # Button
     if st.button("Submit"):
 
+        error = False
+
+        # First number validation
         try:
-            # Convert numbers
             a = float(a)
+
+        except ValueError:
+            st.error("❌ First number should contain numbers only")
+            error = True
+
+        # Second number validation
+        try:
             b = float(b)
 
-            # Convert choice
+        except ValueError:
+            st.error("❌ Second number should contain numbers only")
+            error = True
+
+        # Choice validation
+        try:
             c = float(c)
+
+        except ValueError:
+            st.error("❌ Choice should contain numbers only")
+            error = True
+
+        # Run calculator only if no errors
+        if error == False:
 
             if c == 5:
                 st.warning("Calculator closed")
@@ -60,11 +77,7 @@ if e != "":
                     st.success(f"Your answer is = {q}")
 
                 else:
-                    st.error("Denominator cannot be zero")
+                    st.error("❌ Denominator cannot be zero")
 
             else:
-                st.error("Please choose a choice between 1 - 5")
-
-        except ValueError:
-            st.error("Please choose only number not alphabets")
-
+                st.error("❌ Please choose a choice between 1 - 5")
