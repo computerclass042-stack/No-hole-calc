@@ -1,6 +1,4 @@
 # My first calculator again
-
-python
 print("===== Simple Calculator =====")
 
 while True:
