@@ -1,5 +1,4 @@
-# My first calculator again
-```python
+
 import streamlit as st
 
 st.title("🧮 Simple Calculator")
@@ -34,4 +33,3 @@ if st.button("Calculate"):
 
         else:
             st.success(f"Answer = {a / b}")
-```
