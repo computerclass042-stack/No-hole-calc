@@ -1,35 +1,70 @@
-
+```python
 import streamlit as st
 
-st.title("🧮 Simple Calculator")
+st.title("🧮 My First Calculator Again")
 
-# Number Inputs
-a = st.number_input("Enter first number")
+st.write("For starting calculator press any alphabet or number")
 
-b = st.number_input("Enter second number")
+# Start input
+e = st.text_input("Press number/alphabet to start")
 
-# Operation Choice
-operation = st.selectbox(
-    "Choose operation",
-    ("Addition", "Subtraction", "Multiplication", "Division")
-)
+if e != "":
 
-# Button
-if st.button("Calculate"):
+    st.write("If you want to exit the calculator press 5")
 
-    if operation == "Addition":
-        st.success(f"Answer = {a + b}")
+    # First number
+    a = st.text_input("Enter your first number")
 
-    elif operation == "Subtraction":
-        st.success(f"Answer = {a - b}")
+    # Second number
+    b = st.text_input("Enter your second number")
 
-    elif operation == "Multiplication":
-        st.success(f"Answer = {a * b}")
+    # Choice
+    st.write("1 = plus '+'")
+    st.write("2 = Minus '-'")
+    st.write("3 = multiply '*'")
+    st.write("4 = divide '/'")
+    st.write("5 = Exit")
 
-    elif operation == "Division":
+    c = st.text_input("Enter your choice")
 
-        if b == 0:
-            st.error("Cannot divide by zero")
+    # Button
+    if st.button("Submit"):
 
-        else:
-            st.success(f"Answer = {a / b}")
+        try:
+            # Convert numbers
+            a = float(a)
+            b = float(b)
+
+            # Convert choice
+            c = float(c)
+
+            if c == 5:
+                st.warning("Calculator closed")
+
+            elif c == 1:
+                q = a + b
+                st.success(f"Your answer is = {q}")
+
+            elif c == 2:
+                q = a - b
+                st.success(f"Your answer is = {q}")
+
+            elif c == 3:
+                q = a * b
+                st.success(f"Your answer is = {q}")
+
+            elif c == 4:
+
+                if b != 0:
+                    q = a / b
+                    st.success(f"Your answer is = {q}")
+
+                else:
+                    st.error("Denominator cannot be zero")
+
+            else:
+                st.error("Please choose a choice between 1 - 5")
+
+        except ValueError:
+            st.error("Please choose only number not alphabets")
+```
