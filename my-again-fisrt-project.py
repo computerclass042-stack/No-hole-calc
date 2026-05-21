@@ -1,54 +1,37 @@
 # My first calculator again
-print("===== Simple Calculator =====")
+```python
+import streamlit as st
 
-while True:
+st.title("🧮 Simple Calculator")
 
-    # First Number
-    while True:
-        try:
-            a = float(input("Enter first number:- "))
-            break
-        except ValueError:
-            print("Please enter numbers only")
+# Number Inputs
+a = st.number_input("Enter first number")
 
-    # Second Number
-    while True:
-        try:
-            b = float(input("Enter second number:- "))
-            break
-        except ValueError:
-            print("Please enter numbers only")
+b = st.number_input("Enter second number")
 
-    # Menu
-    print("\n1 = Addition (+)")
-    print("2 = Subtraction (-)")
-    print("3 = Multiplication (*)")
-    print("4 = Division (/)")
-    print("5 = Exit")
+# Operation Choice
+operation = st.selectbox(
+    "Choose operation",
+    ("Addition", "Subtraction", "Multiplication", "Division")
+)
 
-    c = input("Enter your choice:- ")
+# Button
+if st.button("Calculate"):
 
-    if c == "5":
-        print("Calculator closed")
-        print("Thanks for using our calculator")
-        break
+    if operation == "Addition":
+        st.success(f"Answer = {a + b}")
 
-    elif c == "1":
-        print("Your answer is =", a + b)
+    elif operation == "Subtraction":
+        st.success(f"Answer = {a - b}")
 
-    elif c == "2":
-        print("Your answer is =", a - b)
+    elif operation == "Multiplication":
+        st.success(f"Answer = {a * b}")
 
-    elif c == "3":
-        print("Your answer is =", a * b)
-
-    elif c == "4":
+    elif operation == "Division":
 
         if b == 0:
-            print("Cannot divide by zero")
+            st.error("Cannot divide by zero")
 
         else:
-            print("Your answer is =", a / b)
-
-    else:
-        print("Please choose between 1 to 5")
+            st.success(f"Answer = {a / b}")
+```
