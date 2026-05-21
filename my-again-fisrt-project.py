@@ -1,83 +1,97 @@
 
+
 import streamlit as st
 
+# Title
 st.title("🧮 My First Calculator Again")
 
+# Starting Message
 st.write("For starting calculator press any alphabet or number")
 
-e = st.text_input("Press number/alphabet to start")
+# Start Input
+start = st.text_input("Press number/alphabet to start")
 
-if e != "":
+# Run only if something entered
+if start != "":
 
     st.write("If you want to exit the calculator press 5")
 
-    # Inputs
-    a = st.text_input("Enter your first number")
-    b = st.text_input("Enter your second number")
+    # Number Inputs
+    first = st.text_input("Enter your first number")
 
-    # Menu
+    second = st.text_input("Enter your second number")
+
+    # Choices
     st.write("1 = plus '+'")
     st.write("2 = Minus '-'")
     st.write("3 = multiply '*'")
     st.write("4 = divide '/'")
     st.write("5 = Exit")
 
-    c = st.text_input("Enter your choice")
+    choice = st.text_input("Enter your choice")
 
+    # Submit Button
     if st.button("Submit"):
 
-        error = False
+        valid = True
 
-        # First number validation
+        # First Number Validation
         try:
-            a = float(a)
+            first = float(first)
 
         except ValueError:
-            st.error("❌ First number should contain numbers only")
-            error = True
+            st.error("❌ Please enter numbers only in First Number")
+            valid = False
 
-        # Second number validation
+        # Second Number Validation
         try:
-            b = float(b)
+            second = float(second)
 
         except ValueError:
-            st.error("❌ Second number should contain numbers only")
-            error = True
+            st.error("❌ Please enter numbers only in Second Number")
+            valid = False
 
-        # Choice validation
+        # Choice Validation
         try:
-            c = float(c)
+            choice = int(choice)
 
         except ValueError:
             st.error("❌ Choice should contain numbers only")
-            error = True
+            valid = False
 
-        # Run calculator only if no errors
-        if error == False:
+        # Run Calculator only if all inputs are valid
+        if valid:
 
-            if c == 5:
-                st.warning("Calculator closed")
+            # Exit
+            if choice == 5:
+                st.warning("Calculator Closed")
+                st.info("Thanks for using our calculator ❤️")
 
-            elif c == 1:
-                q = a + b
-                st.success(f"Your answer is = {q}")
+            # Addition
+            elif choice == 1:
+                answer = first + second
+                st.success(f"Your answer is = {answer}")
 
-            elif c == 2:
-                q = a - b
-                st.success(f"Your answer is = {q}")
+            # Subtraction
+            elif choice == 2:
+                answer = first - second
+                st.success(f"Your answer is = {answer}")
 
-            elif c == 3:
-                q = a * b
-                st.success(f"Your answer is = {q}")
+            # Multiplication
+            elif choice == 3:
+                answer = first * second
+                st.success(f"Your answer is = {answer}")
 
-            elif c == 4:
+            # Division
+            elif choice == 4:
 
-                if b != 0:
-                    q = a / b
-                    st.success(f"Your answer is = {q}")
-
-                else:
+                if second == 0:
                     st.error("❌ Denominator cannot be zero")
 
+                else:
+                    answer = first / second
+                    st.success(f"Your answer is = {answer}")
+
+            # Invalid Choice
             else:
-                st.error("❌ Please choose a choice between 1 - 5")
+                st.error("❌ Please choose between 1 to 5")
