@@ -1,6 +1,6 @@
 # My first calculator again
 
-```python
+python
 print("===== Simple Calculator =====")
 
 while True:
@@ -54,4 +54,3 @@ while True:
 
     else:
         print("Please choose between 1 to 5")
-```
