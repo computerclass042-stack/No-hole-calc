@@ -1,44 +1,57 @@
 # My first calculator again
 
-print("For starting calculator press any alphabet or number")
-e = input("press number/alphabet to start:- ")
-print("If you want to exit the calculator press 5")
+```python
+print("===== Simple Calculator =====")
+
 while True:
+
+    # First Number
     while True:
         try:
-            a = float(input("Enter your first number:- "))
+            a = float(input("Enter first number:- "))
+            break
         except ValueError:
-            print("Please choose only number not alphabets")
-            continue
-        break
+            print("Please enter numbers only")
+
+    # Second Number
     while True:
-        try:  
-            b = float(input("Enter your second number:- "))
+        try:
+            b = float(input("Enter second number:- "))
+            break
         except ValueError:
-            print("Please choose only number not alphabets")
-            continue
+            print("Please enter numbers only")
+
+    # Menu
+    print("\n1 = Addition (+)")
+    print("2 = Subtraction (-)")
+    print("3 = Multiplication (*)")
+    print("4 = Division (/)")
+    print("5 = Exit")
+
+    c = input("Enter your choice:- ")
+
+    if c == "5":
+        print("Calculator closed")
+        print("Thanks for using our calculator")
         break
 
-    print(("1 = plus'+', 2 = Minus'-', 3 = multiply'*', 4 = divide'/', 5 = Exit"))
-    c = float(input("Enter you choice:- "))
+    elif c == "1":
+        print("Your answer is =", a + b)
 
+    elif c == "2":
+        print("Your answer is =", a - b)
 
-    if c == 5:
-        break
-    elif c == 1:
-        q = a + b
-        print("Your answer is =", q)
-    elif c == 2:
-        q = a - b
-        print("Your answer is =", q)
-    elif c == 3:
-        q = a * b
-        print("Your answer is =", q)
-    elif c == 4:
-        if b != 0:
-            q = a / b
-            print("Your answer is =", q)
+    elif c == "3":
+        print("Your answer is =", a * b)
+
+    elif c == "4":
+
+        if b == 0:
+            print("Cannot divide by zero")
+
         else:
-            print("Denominator cann't be zero'0'")
+            print("Your answer is =", a / b)
+
     else:
-        print("Please choose a choice between 1 - 5")
+        print("Please choose between 1 to 5")
+```
