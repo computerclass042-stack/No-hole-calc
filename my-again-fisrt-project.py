@@ -40,7 +40,7 @@ if start != "":
             first = float(first)
 
         except ValueError:
-            st.error("❌ Please enter numbers only in First Number")
+            st.error("❌ Please enter numbers only in First Context")
             valid = False
 
         # Second Number Validation
@@ -48,7 +48,7 @@ if start != "":
             second = float(second)
 
         except ValueError:
-            st.error("❌ Please enter numbers only in Second Number")
+            st.error("❌ Please enter numbers only in Second Context")
             valid = False
 
         # Choice Validation
